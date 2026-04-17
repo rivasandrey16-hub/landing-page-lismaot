@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Award } from 'lucide-react'
 import type { MenuItem } from '../data/menu'
-import { useClickSound } from '../hooks/useClickSound'
 
 interface Props {
   items: MenuItem[]
@@ -27,8 +26,6 @@ const itemVariants = {
 }
 
 export default function ItemsGrid({ items, onItemClick }: Props) {
-  const { playChord } = useClickSound()
-
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -45,7 +42,7 @@ export default function ItemsGrid({ items, onItemClick }: Props) {
             variants={itemVariants}
             whileHover={{ y: -4, boxShadow: '0 0 20px rgba(232,119,34,0.25)' }}
             whileTap={{ scale: 0.97 }}
-            onClick={() => { playChord(); onItemClick(item) }}
+            onClick={() => onItemClick(item)}
             className="text-left rounded-2xl overflow-hidden border transition-all"
             style={{
               backgroundColor: '#161616',

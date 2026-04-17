@@ -26,9 +26,9 @@ export default function StatsBar() {
           transition={{ delay: 0, duration: 0.5 }}
         >
           <span className="font-bebas leading-none text-black" style={{ fontSize: 'clamp(1.6rem, 7vw, 2.2rem)' }}>
-            24/7
+            CHITAGÁ
           </span>
-          <span className="text-[9px] font-bold tracking-[0.2em] text-black/70">DOMICILIOS</span>
+          <span className="text-[9px] font-bold tracking-[0.2em] text-black/70">DOMICILIOS LOCALES</span>
         </motion.div>
 
         <motion.div

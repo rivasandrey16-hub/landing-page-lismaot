@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useClickSound } from './hooks/useClickSound'
 import Hero from './components/Hero'
 import StatsBar from './components/StatsBar'
 import MenuSection from './components/MenuSection'
@@ -15,6 +16,13 @@ export default function App() {
   const [cart, setCart]               = useState<CartItem[]>([])
   const [cartOpen, setCartOpen]       = useState(false)
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null)
+
+  /* ── global click sound ── */
+  const { playChord } = useClickSound()
+  useEffect(() => {
+    document.addEventListener('click', playChord, { passive: true })
+    return () => document.removeEventListener('click', playChord)
+  }, [playChord])
 
   /* ── scroll reveal ── */
   useEffect(() => {

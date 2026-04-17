@@ -49,7 +49,7 @@ export default function LocationSection() {
               style={{ backgroundColor: '#22c55e', boxShadow: '0 0 8px rgba(34,197,94,0.6)' }}
             />
             <span className="text-sm font-semibold" style={{ color: '#22c55e' }}>
-              Abierto ahora · Domicilios 24/7
+              Abierto ahora · Domicilios
             </span>
           </div>
 

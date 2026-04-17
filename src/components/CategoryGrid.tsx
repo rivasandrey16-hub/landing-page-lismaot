@@ -5,7 +5,6 @@ import {
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { categories } from '../data/menu'
-import { useClickSound } from '../hooks/useClickSound'
 
 const CATEGORY_UI: Record<string, { Icon: LucideIcon; label: string }> = {
   hamburguesas: { Icon: Sandwich,        label: 'Hamburguesas' },
@@ -25,8 +24,6 @@ interface Props {
 }
 
 export default function CategoryGrid({ activeId, onSelect }: Props) {
-  const { playChord } = useClickSound()
-
   return (
     <div className="grid grid-cols-3 gap-3 px-4">
       {categories.map((cat, i) => {
@@ -44,7 +41,7 @@ export default function CategoryGrid({ activeId, onSelect }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.045, duration: 0.4 }}
-            onClick={() => { playChord(); onSelect(cat.id) }}
+            onClick={() => onSelect(cat.id)}
             className="relative flex flex-col items-center justify-center gap-2 py-5 px-2 rounded-2xl border overflow-hidden"
             style={{
               minHeight: '100px',
