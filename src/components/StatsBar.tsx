@@ -1,10 +1,5 @@
 import { motion } from 'framer-motion'
-
-const stats = [
-  { value: '24/7', label: 'DOMICILIOS', icon: null },
-  { value: '🏆', label: 'BURGER PRIME', icon: null },
-  { value: '100%', label: 'CON AMOR', icon: null },
-]
+import { Award } from 'lucide-react'
 
 export default function StatsBar() {
   return (
@@ -23,28 +18,42 @@ export default function StatsBar() {
       />
 
       <div className="relative grid grid-cols-3 divide-x divide-black/15 py-5">
-        {stats.map((s, i) => (
-          <motion.div
-            key={s.label}
-            className="flex flex-col items-center gap-1 px-3"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1, duration: 0.5 }}
-          >
-            <span
-              className="font-bebas leading-none text-black"
-              style={{ fontSize: 'clamp(1.6rem, 7vw, 2.2rem)' }}
-            >
-              {s.value}
-            </span>
-            <span
-              className="text-[9px] font-bold tracking-[0.2em] text-black/70"
-            >
-              {s.label}
-            </span>
-          </motion.div>
-        ))}
+        <motion.div
+          className="flex flex-col items-center gap-1 px-3"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0, duration: 0.5 }}
+        >
+          <span className="font-bebas leading-none text-black" style={{ fontSize: 'clamp(1.6rem, 7vw, 2.2rem)' }}>
+            24/7
+          </span>
+          <span className="text-[9px] font-bold tracking-[0.2em] text-black/70">DOMICILIOS</span>
+        </motion.div>
+
+        <motion.div
+          className="flex flex-col items-center gap-1 px-3"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1, duration: 0.5 }}
+        >
+          <Award size={28} strokeWidth={2} color="#000" />
+          <span className="text-[9px] font-bold tracking-[0.2em] text-black/70">BURGER PRIME</span>
+        </motion.div>
+
+        <motion.div
+          className="flex flex-col items-center gap-1 px-3"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          <span className="font-bebas leading-none text-black" style={{ fontSize: 'clamp(1.6rem, 7vw, 2.2rem)' }}>
+            100%
+          </span>
+          <span className="text-[9px] font-bold tracking-[0.2em] text-black/70">CON AMOR</span>
+        </motion.div>
       </div>
     </div>
   )

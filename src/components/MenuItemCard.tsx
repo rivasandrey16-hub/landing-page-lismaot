@@ -26,6 +26,7 @@ export default function MenuItemCard({ item }: Props) {
           <img
             src={item.image}
             alt={item.name}
+            loading="lazy"
             className="w-full h-full object-cover"
             style={{ backgroundColor: '#1A1A1A' }}
           />
@@ -97,6 +98,7 @@ export default function MenuItemCard({ item }: Props) {
         <img
           src={item.image}
           alt={item.name}
+          loading="lazy"
           className="w-full h-full object-cover"
           style={{ backgroundColor: '#1A1A1A' }}
         />

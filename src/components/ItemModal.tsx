@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X } from 'lucide-react'
+import { X, Award } from 'lucide-react'
 import type { MenuItem } from '../data/menu'
 import { parsePriceCOP, formatPriceCOP } from '../types'
 
@@ -35,11 +35,12 @@ export default function ItemModal({ item, onClose, onAddToCart }: Props) {
     : null
 
   return (
-    <AnimatePresence>
-      {item && (
-        <>
-          {/* ── Backdrop ── */}
+    <>
+      {/* ── Backdrop ── separate AnimatePresence so the keyed child is a direct motion.div */}
+      <AnimatePresence>
+        {item && (
           <motion.div
+            key="item-modal-backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -48,9 +49,14 @@ export default function ItemModal({ item, onClose, onAddToCart }: Props) {
             className="fixed inset-0 z-50"
             style={{ backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(6px)' }}
           />
+        )}
+      </AnimatePresence>
 
-          {/* ── Bottom sheet ── */}
+      {/* ── Bottom sheet ── */}
+      <AnimatePresence>
+        {item && (
           <motion.div
+            key="item-modal-sheet"
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
@@ -68,6 +74,7 @@ export default function ItemModal({ item, onClose, onAddToCart }: Props) {
               <img
                 src={item.image}
                 alt={item.name}
+                loading="lazy"
                 className="w-full h-full object-cover"
                 style={{ backgroundColor: '#111' }}
               />
@@ -80,7 +87,8 @@ export default function ItemModal({ item, onClose, onAddToCart }: Props) {
                   className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-bold"
                   style={{ backgroundColor: '#C9963A', color: '#000' }}
                 >
-                  🏆 AWARD WINNER
+                  <Award size={11} strokeWidth={2.5} />
+                  AWARD WINNER
                 </div>
               )}
               <button
@@ -198,8 +206,8 @@ export default function ItemModal({ item, onClose, onAddToCart }: Props) {
               )}
             </div>
           </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+        )}
+      </AnimatePresence>
+    </>
   )
 }

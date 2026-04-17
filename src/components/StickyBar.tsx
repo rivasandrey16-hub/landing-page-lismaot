@@ -3,8 +3,10 @@ const WA_LINK = 'https://wa.me/573133455659?text=Hola!%20Quiero%20hacer%20un%20p
 export default function StickyBar() {
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-30 px-4 py-3"
+      className="fixed bottom-0 left-0 right-0 z-30 px-4"
       style={{
+        paddingTop: '12px',
+        paddingBottom: 'max(12px, env(safe-area-inset-bottom))',
         backgroundColor: 'rgba(8,8,8,0.97)',
         backdropFilter: 'blur(16px)',
         borderTop: '1px solid rgba(255,255,255,0.06)',

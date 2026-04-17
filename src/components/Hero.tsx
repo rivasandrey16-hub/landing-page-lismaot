@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6"
+      className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden px-6"
     >
       {/* Deep parallax background */}
       <div
@@ -28,13 +28,13 @@ export default function Hero() {
         className="absolute inset-0 -top-[25%] will-change-transform"
         style={{
           background:
-            'radial-gradient(ellipse 100% 80% at 50% 65%, #3D1500 0%, #1E0A00 25%, #0D0D0D 60%, #000 100%)',
+            'radial-gradient(ellipse 100% 80% at 50% 65%, #3D1500 0%, #1E0A00 25%, #0D0D0D 60%, #0D0D0D 100%)',
         }}
       />
 
       {/* Noise texture overlay */}
       <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        className="absolute inset-0 opacity-[0.05] pointer-events-none"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
         }}
@@ -53,19 +53,25 @@ export default function Hero() {
 
         {/* Logo */}
         <motion.div
-          className="logo-glow logo-float mb-6"
+          className="mb-6"
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <svg width="110" height="82" viewBox="0 0 110 82" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="22" cy="60" r="17" fill="#E87722" />
-            <circle cx="55" cy="22" r="17" fill="#E87722" />
-            <circle cx="88" cy="60" r="17" fill="#E87722" />
-            <path d="M33 50 Q44 32 46 29" stroke="rgba(255,255,255,0.25)" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-            <path d="M64 29 Q66 32 77 50" stroke="rgba(255,255,255,0.25)" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-            <path d="M36 68 Q55 80 74 68" stroke="rgba(255,255,255,0.25)" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-          </svg>
+          <motion.div
+            className="logo-glow"
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 4, ease: 'easeInOut', repeat: Infinity, delay: 0.9 }}
+          >
+            <svg width="110" height="82" viewBox="0 0 110 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="22" cy="60" r="17" fill="#E87722" />
+              <circle cx="55" cy="22" r="17" fill="#E87722" />
+              <circle cx="88" cy="60" r="17" fill="#E87722" />
+              <path d="M33 50 Q44 32 46 29" stroke="rgba(255,255,255,0.25)" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+              <path d="M64 29 Q66 32 77 50" stroke="rgba(255,255,255,0.25)" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+              <path d="M36 68 Q55 80 74 68" stroke="rgba(255,255,255,0.25)" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+            </svg>
+          </motion.div>
         </motion.div>
 
         {/* Brand name */}
@@ -76,11 +82,13 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
           <h1
-            className="text-gradient-orange leading-none"
+            className="leading-none"
             style={{
               fontFamily: "'DM Serif Display', serif",
               fontSize: 'clamp(4rem, 15vw, 8rem)',
               letterSpacing: '-0.03em',
+              color: '#F5F0E8',
+              textWrap: 'balance',
             }}
           >
             LISMAOT

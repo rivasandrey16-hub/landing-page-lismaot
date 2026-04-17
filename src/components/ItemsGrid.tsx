@@ -1,32 +1,51 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Award } from 'lucide-react'
 import type { MenuItem } from '../data/menu'
+import { useClickSound } from '../hooks/useClickSound'
 
 interface Props {
   items: MenuItem[]
   onItemClick: (item: MenuItem) => void
 }
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.06 },
+  },
+  exit: { opacity: 0, y: -8, transition: { duration: 0.2 } },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 18 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring' as const, damping: 25, stiffness: 300 },
+  },
+}
+
 export default function ItemsGrid({ items, onItemClick }: Props) {
+  const { playChord } = useClickSound()
+
   return (
     <AnimatePresence mode="wait">
       <motion.div
         key={items.map(i => i.name).join('-')}
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -8 }}
-        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        exit="exit"
         className="grid grid-cols-2 gap-3 px-4"
       >
-        {items.map((item, i) => (
+        {items.map((item) => (
           <motion.button
             key={item.name}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.04, duration: 0.35 }}
+            variants={itemVariants}
             whileHover={{ y: -4, boxShadow: '0 0 20px rgba(232,119,34,0.25)' }}
             whileTap={{ scale: 0.97 }}
-            onClick={() => onItemClick(item)}
+            onClick={() => { playChord(); onItemClick(item) }}
             className="text-left rounded-2xl overflow-hidden border transition-all"
             style={{
               backgroundColor: '#161616',
@@ -39,6 +58,7 @@ export default function ItemsGrid({ items, onItemClick }: Props) {
               <img
                 src={item.image}
                 alt={item.name}
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-500"
                 style={{ backgroundColor: '#1A1A1A' }}
               />
