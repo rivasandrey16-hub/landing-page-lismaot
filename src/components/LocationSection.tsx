@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { MapPin, Phone, Clock } from 'lucide-react'
 
 const MAPS_URL =
@@ -5,98 +6,121 @@ const MAPS_URL =
 
 export default function LocationSection() {
   return (
-    <section id="ubicacion" className="px-4 pb-10 reveal">
-      <div
-        className="rounded-2xl p-6 border flex flex-col gap-5"
-        style={{ backgroundColor: '#161616', borderColor: '#2A2A2A' }}
+    <section id="ubicacion" className="px-3 pb-12 reveal">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="rounded-2xl overflow-hidden"
+        style={{
+          background: 'linear-gradient(160deg, #0F0F0F 0%, #141410 100%)',
+          border: '1px solid rgba(255,255,255,0.06)',
+          boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+        }}
       >
-        {/* Header */}
-        <div>
+        {/* Header band */}
+        <div
+          className="px-5 py-4"
+          style={{
+            background: 'linear-gradient(135deg, rgba(232,119,34,0.12), rgba(201,150,58,0.06))',
+            borderBottom: '1px solid rgba(255,255,255,0.05)',
+          }}
+        >
           <p
-            className="text-xs font-semibold tracking-[0.25em] mb-2"
+            className="font-bebas tracking-[0.3em] text-[12px] mb-0.5"
             style={{ color: '#E87722' }}
           >
             ENCUÉNTRANOS
           </p>
           <h2
-            className="text-2xl font-bold"
-            style={{ fontFamily: "'DM Serif Display', serif", color: '#F5F0E8' }}
+            className="font-bebas leading-none"
+            style={{ fontSize: '2rem', color: '#F5F0E8' }}
           >
-            Nuestra ubicación
+            NUESTRA UBICACIÓN
           </h2>
         </div>
 
-        {/* Open badge */}
-        <div className="flex items-center gap-2">
-          <span
-            className="pulse-dot w-2 h-2 rounded-full flex-shrink-0"
-            style={{ backgroundColor: '#22c55e' }}
-          />
-          <span className="text-sm font-semibold" style={{ color: '#22c55e' }}>
-            Abierto ahora
-          </span>
-        </div>
+        <div className="p-5 flex flex-col gap-5">
+          {/* Open badge */}
+          <div className="flex items-center gap-2.5">
+            <span
+              className="pulse-dot w-2.5 h-2.5 rounded-full flex-shrink-0"
+              style={{ backgroundColor: '#22c55e', boxShadow: '0 0 8px rgba(34,197,94,0.6)' }}
+            />
+            <span className="text-sm font-semibold" style={{ color: '#22c55e' }}>
+              Abierto ahora · Domicilios 24/7
+            </span>
+          </div>
 
-        {/* Info rows */}
-        <div className="flex flex-col gap-4">
+          {/* Info */}
+          <div className="flex flex-col gap-4">
+            <a
+              href={MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start gap-3.5 group"
+            >
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{ backgroundColor: 'rgba(232,119,34,0.12)', border: '1px solid rgba(232,119,34,0.2)' }}
+              >
+                <MapPin size={16} style={{ color: '#E87722' }} />
+              </div>
+              <div>
+                <p className="text-[14px] font-semibold group-hover:underline" style={{ color: '#F5F0E8' }}>
+                  Cra 2 N 7-37
+                </p>
+                <p className="text-[12px] mt-0.5" style={{ color: '#5A4E44' }}>
+                  Chitagá, Norte de Santander
+                </p>
+              </div>
+            </a>
+
+            <a href="tel:+573133455659" className="flex items-center gap-3.5 group">
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{ backgroundColor: 'rgba(232,119,34,0.12)', border: '1px solid rgba(232,119,34,0.2)' }}
+              >
+                <Phone size={16} style={{ color: '#E87722' }} />
+              </div>
+              <p className="text-[14px] font-semibold group-hover:underline" style={{ color: '#F5F0E8' }}>
+                313 345 5659
+              </p>
+            </a>
+
+            <div className="flex items-center gap-3.5">
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{ backgroundColor: 'rgba(232,119,34,0.12)', border: '1px solid rgba(232,119,34,0.2)' }}
+              >
+                <Clock size={16} style={{ color: '#E87722' }} />
+              </div>
+              <p className="text-[14px]" style={{ color: '#F5F0E8' }}>
+                Domicilios{' '}
+                <span className="font-bold" style={{ color: '#E87722' }}>24 horas</span>
+                {', '}
+                <span className="font-bold" style={{ color: '#E87722' }}>7 días</span>
+              </p>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div style={{ height: '1px', backgroundColor: 'rgba(255,255,255,0.05)' }} />
+
+          {/* Maps button */}
           <a
             href={MAPS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-start gap-3 group"
+            className="flex items-center justify-center gap-2.5 w-full py-3.5 rounded-xl border-2 font-bold text-[14px] transition-all hover:bg-[#E87722]/10 active:scale-[0.98]"
+            style={{ borderColor: '#E87722', color: '#E87722' }}
           >
-            <MapPin
-              size={18}
-              className="flex-shrink-0 mt-0.5 transition-colors"
-              style={{ color: '#E87722' }}
-            />
-            <div>
-              <p className="text-sm font-semibold group-hover:underline" style={{ color: '#F5F0E8' }}>
-                Cra 2 N 7-37
-              </p>
-              <p className="text-xs" style={{ color: '#999080' }}>
-                Chitagá, Norte de Santander
-              </p>
-            </div>
+            <MapPin size={16} />
+            Abrir en Google Maps
           </a>
-
-          <a
-            href="tel:+573133455659"
-            className="flex items-center gap-3 group"
-          >
-            <Phone
-              size={18}
-              className="flex-shrink-0 transition-colors"
-              style={{ color: '#E87722' }}
-            />
-            <p className="text-sm font-semibold group-hover:underline" style={{ color: '#F5F0E8' }}>
-              313 345 5659
-            </p>
-          </a>
-
-          <div className="flex items-center gap-3">
-            <Clock size={18} className="flex-shrink-0" style={{ color: '#E87722' }} />
-            <p className="text-sm" style={{ color: '#F5F0E8' }}>
-              Domicilios{' '}
-              <span className="font-bold" style={{ color: '#E87722' }}>
-                24/7
-              </span>
-            </p>
-          </div>
         </div>
-
-        {/* Map link button */}
-        <a
-          href={MAPS_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border text-sm font-semibold transition-colors hover:bg-[#E87722]/10"
-          style={{ borderColor: '#E87722', color: '#E87722' }}
-        >
-          <MapPin size={15} />
-          Abrir en Google Maps
-        </a>
-      </div>
+      </motion.div>
     </section>
   )
 }

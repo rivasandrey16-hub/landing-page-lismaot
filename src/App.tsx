@@ -27,7 +27,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#1A1A1A' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#0D0D0D' }}>
       <Hero />
       <StatsBar />
       <MenuSection />
@@ -35,14 +35,17 @@ export default function App() {
 
       {/* Footer */}
       <footer
-        className="px-5 py-8 text-center border-t"
-        style={{ borderColor: '#2A2A2A' }}
+        className="px-5 py-8 text-center"
+        style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}
       >
-        <p className="text-xs" style={{ color: '#999080' }}>
-          © {new Date().getFullYear()} LISMAOT Restaurant · Chitagá, Norte de Santander
+        <p
+          className="font-bebas tracking-widest text-[1.1rem] mb-1"
+          style={{ color: '#2A2218' }}
+        >
+          LISMAOT RESTAURANT
         </p>
-        <p className="text-xs mt-1" style={{ color: '#5a5040' }}>
-          Cra 2 N 7-37 · 313 345 5659
+        <p className="text-xs" style={{ color: '#3A3028' }}>
+          © {new Date().getFullYear()} · Cra 2 N 7-37, Chitagá · 313 345 5659
         </p>
       </footer>
 
