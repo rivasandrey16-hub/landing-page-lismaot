@@ -3,7 +3,7 @@ const WA_LINK = 'https://wa.me/573133455659?text=Hola!%20Quiero%20hacer%20un%20p
 export default function StickyBar() {
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-50 px-4 py-3"
+      className="fixed bottom-0 left-0 right-0 z-30 px-4 py-3"
       style={{
         backgroundColor: 'rgba(8,8,8,0.97)',
         backdropFilter: 'blur(16px)',
@@ -12,6 +12,7 @@ export default function StickyBar() {
       }}
     >
       <div className="flex items-center gap-2.5 max-w-lg mx-auto">
+        {/* WhatsApp — full width primary CTA */}
         <a
           href={WA_LINK}
           target="_blank"
@@ -20,6 +21,7 @@ export default function StickyBar() {
           style={{
             backgroundColor: '#25D366',
             boxShadow: '0 4px 16px rgba(37,211,102,0.3)',
+            fontFamily: "'DM Sans', sans-serif",
           }}
         >
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
@@ -29,10 +31,15 @@ export default function StickyBar() {
           Pedir por WhatsApp
         </a>
 
+        {/* Menu anchor */}
         <a
           href="#menu"
           className="flex items-center justify-center px-5 py-3.5 rounded-xl font-bold text-[14px] border-2 transition-all hover:bg-[#E87722]/10 active:scale-[0.98]"
-          style={{ borderColor: '#E87722', color: '#E87722' }}
+          style={{
+            borderColor: '#E87722',
+            color: '#E87722',
+            fontFamily: "'DM Sans', sans-serif",
+          }}
         >
           Menú
         </a>

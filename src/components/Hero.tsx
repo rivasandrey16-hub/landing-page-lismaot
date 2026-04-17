@@ -76,8 +76,12 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
           <h1
-            className="font-bebas text-gradient-orange leading-none tracking-wider"
-            style={{ fontSize: 'clamp(4.5rem, 22vw, 6.5rem)' }}
+            className="text-gradient-orange leading-none"
+            style={{
+              fontFamily: "'DM Serif Display', serif",
+              fontSize: 'clamp(4rem, 15vw, 8rem)',
+              letterSpacing: '-0.03em',
+            }}
           >
             LISMAOT
           </h1>
