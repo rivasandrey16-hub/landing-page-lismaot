@@ -49,7 +49,7 @@ export default function LocationSection() {
               style={{ backgroundColor: '#22c55e', boxShadow: '0 0 8px rgba(34,197,94,0.6)' }}
             />
             <span className="text-sm font-semibold" style={{ color: '#22c55e' }}>
-              Abierto ahora · Domicilios
+              Abierto ahora · Domicilios locales
             </span>
           </div>
 
@@ -97,10 +97,10 @@ export default function LocationSection() {
                 <Clock size={16} style={{ color: '#E87722' }} />
               </div>
               <p className="text-[14px]" style={{ color: '#F5F0E8' }}>
-                Domicilios{' '}
-                <span className="font-bold" style={{ color: '#E87722' }}>24 horas</span>
-                {', '}
-                <span className="font-bold" style={{ color: '#E87722' }}>7 días</span>
+                Domicilios solo en{' '}
+                <span className="font-bold" style={{ color: '#E87722' }}>Chitagá</span>
+                {' '}y{' '}
+                <span className="font-bold" style={{ color: '#E87722' }}>alrededores</span>
               </p>
             </div>
           </div>
