@@ -4,6 +4,7 @@ export interface MenuItem {
   price: string
   image: string
   featured?: boolean
+  available?: boolean
 }
 
 export interface MenuCategory {
@@ -14,7 +15,11 @@ export interface MenuCategory {
   items: MenuItem[]
 }
 
-export const categories: MenuCategory[] = [
+/**
+ * Bundled fallback menu — used when Supabase is unreachable
+ * and no localStorage cache exists. Also consumed by the seed script.
+ */
+export const initialCategories: MenuCategory[] = [
   {
     id: 'hamburguesas',
     label: 'HAMBURGUESAS',
@@ -406,3 +411,7 @@ export const categories: MenuCategory[] = [
     ],
   },
 ]
+
+/** Back-compat export — existing imports of `categories` keep working. */
+export const categories = initialCategories
+

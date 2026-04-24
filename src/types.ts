@@ -1,4 +1,6 @@
-import type { MenuItem } from './data/menu'
+import type { MenuCategory, MenuItem } from './data/menu'
+
+export type { MenuCategory, MenuItem }
 
 export interface CartItem extends MenuItem {
   quantity: number

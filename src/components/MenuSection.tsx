@@ -1,11 +1,13 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { categories } from '../data/menu'
-import type { MenuItem } from '../data/menu'
+import type { MenuCategory, MenuItem } from '../data/menu'
 import CategoryGrid from './CategoryGrid'
 import ItemsGrid from './ItemsGrid'
+import MenuSkeleton from './MenuSkeleton'
 
 interface Props {
+  categories: MenuCategory[]
+  loading: boolean
   onItemClick: (item: MenuItem) => void
 }
 
@@ -21,9 +23,18 @@ const CATEGORY_LABELS: Record<string, string> = {
   bebidas:      'Bebidas',
 }
 
-export default function MenuSection({ onItemClick }: Props) {
-  const [activeCategory, setActiveCategory] = useState('hamburguesas')
+export default function MenuSection({ categories, loading, onItemClick }: Props) {
+  const [activeCategory, setActiveCategory] = useState<string>(
+    () => categories[0]?.id ?? 'hamburguesas',
+  )
   const itemsRef = useRef<HTMLDivElement>(null)
+
+  // If categories change (remote load) and the active one no longer exists, reset
+  useEffect(() => {
+    if (categories.length > 0 && !categories.some(c => c.id === activeCategory)) {
+      setActiveCategory(categories[0].id)
+    }
+  }, [categories, activeCategory])
 
   const activeCat   = categories.find(c => c.id === activeCategory)
   const activeItems = activeCat?.items ?? []
@@ -66,33 +77,43 @@ export default function MenuSection({ onItemClick }: Props) {
         </motion.div>
       </div>
 
-      {/* ── Category grid ── */}
-      <div className="mb-10 reveal">
-        <CategoryGrid activeId={activeCategory} onSelect={handleCategorySelect} />
-      </div>
+      {loading && categories.length === 0 ? (
+        <MenuSkeleton />
+      ) : (
+        <>
+          {/* ── Category grid ── */}
+          <div className="mb-10 reveal">
+            <CategoryGrid
+              categories={categories}
+              activeId={activeCategory}
+              onSelect={handleCategorySelect}
+            />
+          </div>
 
-      {/* ── Items grid ── */}
-      <div ref={itemsRef} className="scroll-mt-6">
-        {/* Active category title + note */}
-        <div className="px-5 mb-5">
-          <h3
-            className="text-2xl uppercase mb-1"
-            style={{ fontFamily: "'DM Serif Display', serif", color: '#F5F0E8' }}
-          >
-            {CATEGORY_LABELS[activeCategory] ?? activeCategory}
-          </h3>
-          {activeCat?.note && (
-            <p className="text-xs font-medium" style={{ color: '#C9963A' }}>
-              ★ {activeCat.note}
-            </p>
-          )}
-          <p className="text-xs mt-1" style={{ color: '#4A3E34' }}>
-            {activeItems.length} opciones disponibles · toca para ver detalles
-          </p>
-        </div>
+          {/* ── Items grid ── */}
+          <div ref={itemsRef} className="scroll-mt-6">
+            {/* Active category title + note */}
+            <div className="px-5 mb-5">
+              <h3
+                className="text-2xl uppercase mb-1"
+                style={{ fontFamily: "'DM Serif Display', serif", color: '#F5F0E8' }}
+              >
+                {CATEGORY_LABELS[activeCategory] ?? activeCat?.label ?? activeCategory}
+              </h3>
+              {activeCat?.note && (
+                <p className="text-xs font-medium" style={{ color: '#C9963A' }}>
+                  ★ {activeCat.note}
+                </p>
+              )}
+              <p className="text-xs mt-1" style={{ color: '#4A3E34' }}>
+                {activeItems.length} opciones disponibles · toca para ver detalles
+              </p>
+            </div>
 
-        <ItemsGrid items={activeItems} onItemClick={onItemClick} />
-      </div>
+            <ItemsGrid items={activeItems} onItemClick={onItemClick} />
+          </div>
+        </>
+      )}
     </section>
   )
 }
