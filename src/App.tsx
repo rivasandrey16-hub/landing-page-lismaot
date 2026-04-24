@@ -92,9 +92,18 @@ export default function App() {
         >
           LISMAOT RESTAURANT
         </p>
-        <p className="text-xs" style={{ color: '#3A3028' }}>
-          © {new Date().getFullYear()} · Cra 2 N 7-37, Chitagá · 313 345 5659
+        <p className="text-xs mb-2" style={{ color: '#3A3028' }}>
+          © {new Date().getFullYear()} · Cra. 7 #3-58, Chitagá · 313 345 5659
         </p>
+        <a
+          href="https://www.instagram.com/lismaot"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs hover:opacity-70 transition-opacity"
+          style={{ color: '#3A2830' }}
+        >
+          @lismaot
+        </a>
       </footer>
 
       <StickyBar />

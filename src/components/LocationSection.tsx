@@ -1,8 +1,28 @@
 import { motion } from 'framer-motion'
 import { MapPin, Phone, Clock } from 'lucide-react'
 
-const MAPS_URL =
-  'https://maps.google.com/?q=Cra+2+N+7-37+Chitagá+Norte+de+Santander+Colombia'
+const MAPS_URL = 'https://maps.app.goo.gl/vy1pDC8otW4NfD7E7'
+const IG_URL   = 'https://www.instagram.com/lismaot'
+
+/* Instagram SVG logo — Lucide no incluye logos de marcas */
+function InstagramIcon({ size = 16, color = 'currentColor' }: { size?: number; color?: string }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={color}
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="0.5" fill={color} stroke="none" />
+    </svg>
+  )
+}
 
 export default function LocationSection() {
   return (
@@ -53,8 +73,10 @@ export default function LocationSection() {
             </span>
           </div>
 
-          {/* Info */}
+          {/* Info rows */}
           <div className="flex flex-col gap-4">
+
+            {/* Address */}
             <a
               href={MAPS_URL}
               target="_blank"
@@ -69,7 +91,7 @@ export default function LocationSection() {
               </div>
               <div>
                 <p className="text-[14px] font-semibold group-hover:underline" style={{ color: '#F5F0E8' }}>
-                  Cra 2 N 7-37
+                  Cra. 7 #3-58
                 </p>
                 <p className="text-[12px] mt-0.5" style={{ color: '#5A4E44' }}>
                   Chitagá, Norte de Santander
@@ -77,6 +99,7 @@ export default function LocationSection() {
               </div>
             </a>
 
+            {/* Phone */}
             <a href="tel:+573133455659" className="flex items-center gap-3.5 group">
               <div
                 className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -89,6 +112,7 @@ export default function LocationSection() {
               </p>
             </a>
 
+            {/* Delivery zone */}
             <div className="flex items-center gap-3.5">
               <div
                 className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -103,22 +127,58 @@ export default function LocationSection() {
                 <span className="font-bold" style={{ color: '#E87722' }}>alrededores</span>
               </p>
             </div>
+
+            {/* Instagram */}
+            <a
+              href={IG_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3.5 group"
+            >
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{ backgroundColor: 'rgba(193,53,132,0.12)', border: '1px solid rgba(193,53,132,0.25)' }}
+              >
+                <InstagramIcon size={16} color="#C13584" />
+              </div>
+              <div>
+                <p className="text-[14px] font-semibold group-hover:underline" style={{ color: '#F5F0E8' }}>
+                  @lismaot
+                </p>
+                <p className="text-[11px] mt-0.5" style={{ color: '#5A4E44' }}>
+                  Síguenos en Instagram
+                </p>
+              </div>
+            </a>
+
           </div>
 
           {/* Divider */}
           <div style={{ height: '1px', backgroundColor: 'rgba(255,255,255,0.05)' }} />
 
-          {/* Maps button */}
-          <a
-            href={MAPS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2.5 w-full py-3.5 rounded-xl border-2 font-bold text-[14px] transition-all hover:bg-[#E87722]/10 active:scale-[0.98]"
-            style={{ borderColor: '#E87722', color: '#E87722' }}
-          >
-            <MapPin size={16} />
-            Abrir en Google Maps
-          </a>
+          {/* Action buttons */}
+          <div className="flex gap-3">
+            <a
+              href={MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl border-2 font-bold text-[13px] transition-all hover:bg-[#E87722]/10 active:scale-[0.98]"
+              style={{ borderColor: '#E87722', color: '#E87722' }}
+            >
+              <MapPin size={15} />
+              Google Maps
+            </a>
+            <a
+              href={IG_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl border-2 font-bold text-[13px] transition-all active:scale-[0.98]"
+              style={{ borderColor: 'rgba(193,53,132,0.5)', color: '#C13584' }}
+            >
+              <InstagramIcon size={15} color="#C13584" />
+              Instagram
+            </a>
+          </div>
         </div>
       </motion.div>
     </section>
