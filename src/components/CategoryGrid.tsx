@@ -4,7 +4,7 @@ import {
   UtensilsCrossed, Fish, Star, GlassWater
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
-import { categories } from '../data/menu'
+import type { MenuCategory } from '../data/menu'
 
 const CATEGORY_UI: Record<string, { Icon: LucideIcon; label: string }> = {
   hamburguesas: { Icon: Sandwich,        label: 'Hamburguesas' },
@@ -19,11 +19,12 @@ const CATEGORY_UI: Record<string, { Icon: LucideIcon; label: string }> = {
 }
 
 interface Props {
+  categories: MenuCategory[]
   activeId: string
   onSelect: (id: string) => void
 }
 
-export default function CategoryGrid({ activeId, onSelect }: Props) {
+export default function CategoryGrid({ categories, activeId, onSelect }: Props) {
   return (
     <div className="grid grid-cols-3 gap-3 px-4">
       {categories.map((cat, i) => {
