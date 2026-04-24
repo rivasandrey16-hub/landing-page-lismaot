@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://lismaot.netlify.app/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://lismaot.netlify.app/images/burgers/burger-lismaotica-criolla.png</image:loc>
+      <image:title>Burger Lismaotica Criolla</image:title>
+      <image:caption>Hamburguesa premiada BOB Premium Burger Prime 2025</image:caption>
+    </image:image>
+  </url>
+</urlset>

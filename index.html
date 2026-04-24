@@ -4,14 +4,109 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="LISMAOT Restaurant — Hamburguesas, Carnes, Alitas y más en Chitagá, Norte de Santander. Domicilios locales." />
-    <meta property="og:title" content="LISMAOT Restaurant" />
-    <meta property="og:description" content="Hamburguesas premium, carnes, alitas, perros calientes y más. Chitagá, N. de Santander." />
-    <meta property="og:image" content="https://lismaot.netlify.app/favicon.svg" />
+    <meta name="theme-color" content="#0D0D0D" />
+
+    <!-- Primary SEO -->
+    <title>LISMAOT Restaurant — Hamburguesas y Comida en Chitagá, Norte de Santander</title>
+    <meta name="description" content="Restaurante LISMAOT en Chitagá: hamburguesas premium, carnes, alitas, perros calientes, pinchos y bebidas. Pide a domicilio por WhatsApp. Cra. 7 #3-58, Chitagá, Norte de Santander." />
+    <meta name="keywords" content="restaurante chitagá, hamburguesas chitagá, comida a domicilio chitagá, lismaot, burger prime chitagá, restaurante norte de santander, alitas chitagá, pinchos chitagá" />
+    <meta name="author" content="LISMAOT Restaurant" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://lismaot.netlify.app/" />
+
+    <!-- Geo signals (Local SEO) -->
+    <meta name="geo.region" content="CO-NSA" />
+    <meta name="geo.placename" content="Chitagá, Norte de Santander" />
+    <meta name="geo.position" content="7.1369;-72.6661" />
+    <meta name="ICBM" content="7.1369, -72.6661" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="LISMAOT Restaurant — Hamburguesas en Chitagá" />
+    <meta property="og:description" content="Hamburguesas premium, carnes, alitas y más. Domicilios en Chitagá, Norte de Santander. Pide por WhatsApp." />
+    <meta property="og:image" content="https://lismaot.netlify.app/images/burgers/burger-lismaotica-criolla.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Hamburguesa Lismaotica Criolla — Premio BOB Premium Burger Prime 2025" />
     <meta property="og:url" content="https://lismaot.netlify.app/" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="restaurant.restaurant" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:site_name" content="LISMAOT Restaurant" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <title>LISMAOT Restaurant</title>
+    <meta name="twitter:title" content="LISMAOT Restaurant — Chitagá" />
+    <meta name="twitter:description" content="Hamburguesas premium, carnes, alitas y más. Domicilios en Chitagá." />
+    <meta name="twitter:image" content="https://lismaot.netlify.app/images/burgers/burger-lismaotica-criolla.png" />
+
+    <!-- Structured Data: Restaurant schema (Google Rich Results) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "@id": "https://lismaot.netlify.app/#restaurant",
+      "name": "LISMAOT Restaurant",
+      "url": "https://lismaot.netlify.app/",
+      "image": "https://lismaot.netlify.app/images/burgers/burger-lismaotica-criolla.png",
+      "logo": "https://lismaot.netlify.app/favicon.svg",
+      "description": "Restaurante en Chitagá especializado en hamburguesas premium, carnes, alitas, perros calientes, pinchos y bebidas. Reconocimiento BOB Premium Burger Prime 2025 — la más original y creativa.",
+      "telephone": "+573133455659",
+      "email": "lismaot.contacto@gmail.com",
+      "priceRange": "$$",
+      "servesCuisine": ["Colombiana", "Hamburguesas", "Comida rápida", "Parrilla"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Cra. 7 #3-58",
+        "addressLocality": "Chitagá",
+        "addressRegion": "Norte de Santander",
+        "postalCode": "543650",
+        "addressCountry": "CO"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 7.1369,
+        "longitude": -72.6661
+      },
+      "hasMap": "https://maps.app.goo.gl/vy1pDC8otW4NfD7E7",
+      "sameAs": [
+        "https://www.instagram.com/lismaot"
+      ],
+      "acceptsReservations": false,
+      "menu": "https://lismaot.netlify.app/#menu",
+      "potentialAction": {
+        "@type": "OrderAction",
+        "target": "https://wa.me/573133455659",
+        "deliveryMethod": "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet"
+      },
+      "award": "BOB Premium Burger Prime 2025 — Más original y creativa",
+      "areaServed": {
+        "@type": "City",
+        "name": "Chitagá",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Norte de Santander"
+        }
+      }
+    }
+    </script>
+
+    <!-- Local Business additional schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "LISMAOT Restaurant",
+      "image": "https://lismaot.netlify.app/images/burgers/burger-lismaotica-criolla.png",
+      "telephone": "+573133455659",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Cra. 7 #3-58",
+        "addressLocality": "Chitagá",
+        "addressRegion": "Norte de Santander",
+        "addressCountry": "CO"
+      },
+      "url": "https://lismaot.netlify.app/"
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

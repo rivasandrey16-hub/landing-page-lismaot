@@ -1,11 +1,12 @@
 import { useState, useEffect, useCallback } from 'react'
-import { LogOut, RefreshCw, FolderTree, UtensilsCrossed } from 'lucide-react'
+import { LogOut, RefreshCw, FolderTree, UtensilsCrossed, BarChart3 } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 import { fetchAdminMenu, type AdminCategory } from '../lib/menuService'
 import CategoriesPanel from '../admin/CategoriesPanel'
 import ItemsPanel from '../admin/ItemsPanel'
+import OrdersPanel from '../admin/OrdersPanel'
 
-type Tab = 'categories' | 'items'
+type Tab = 'categories' | 'items' | 'orders'
 
 export default function AdminPanel() {
   const { user, signOut } = useAuth()
@@ -85,7 +86,10 @@ export default function AdminPanel() {
       </header>
 
       {/* Tabs */}
-      <nav className="flex gap-1 px-4 py-3" style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+      <nav className="flex gap-1 px-4 py-3 overflow-x-auto" style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+        <TabBtn active={tab === 'orders'} onClick={() => setTab('orders')} icon={<BarChart3 size={15} />}>
+          Ventas
+        </TabBtn>
         <TabBtn active={tab === 'items'} onClick={() => setTab('items')} icon={<UtensilsCrossed size={15} />}>
           Items
         </TabBtn>
@@ -106,6 +110,8 @@ export default function AdminPanel() {
         )}
         {loading && data.length === 0 ? (
           <p style={{ color: '#6A5E52' }}>Cargando…</p>
+        ) : tab === 'orders' ? (
+          <OrdersPanel categories={data} />
         ) : tab === 'items' ? (
           <ItemsPanel categories={data} onChanged={refresh} />
         ) : (
