@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://rivasandrey16-hub.github.io/landing-page-lismaot",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

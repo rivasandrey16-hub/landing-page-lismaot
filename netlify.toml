@@ -1,0 +1,22 @@
+# Netlify build & deploy config
+# Docs: https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # Vite outputs to /dist
+  publish   = "dist"
+  command   = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# SPA fallback — without this, refreshing any URL other than `/` returns 404
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+# Long-term cache for fingerprinted assets (JS/CSS chunks)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
