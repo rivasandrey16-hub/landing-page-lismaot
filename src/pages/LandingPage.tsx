@@ -104,7 +104,7 @@ export default function LandingPage() {
         </a>
       </footer>
 
-      <StickyBar />
+      <StickyBar totalItems={totalItems} onOpenCart={() => setCartOpen(true)} />
 
       {/* ── Overlays ── */}
       <ItemModal
